@@ -47,7 +47,8 @@ Create an a Wikipedia Light web application to support multiple Wiki Post Author
 
 * You application depends on the built-in Django Admin for all  of your database maintenance (1 pts)
 
-
+### CHALLENGE:
+Add support for searching Wiki entries by keyword(s)
 
 
 

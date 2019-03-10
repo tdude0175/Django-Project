@@ -1,6 +1,10 @@
 # Monthly project 2: A Django Wiki web application
 
-## Requirements (Total of 20 points)
+### Design Requirements:
+* You MUST produce a written design *prior* to starting to code your solution. This design doesn't have to be a book, but should at least note needed endpoints and basic sketches on how you plan to use CSS Grid for your various screens.
+* You MUST demonstrate that you have stood up all your endpoints, routes, views, and templates with stubbed out dummy data *prior* to adding specific logic.
+
+## Functional Requirements (Total of 20 points)
 
 ### Aesthetics (10 pts)
 Use HTML, CSS, templating, and any CSS resources neccessary to make your site aesthetically pleasing. NOTE: Primary layout should rely on CSS grid!

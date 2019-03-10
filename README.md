@@ -37,9 +37,9 @@ Create an a Wikipedia Light web application to support multiple Wiki Post Author
 * All Users should be able to click the Title of an individual entry to see the full post. If a displayed entry is also owned by the current signed in User, you should offer them options to 'Edit and/or 'Delete' the entry.
 
 #### Model Details (5 pts):
-* Each Wiki entry should support a required 'Post Title' and 'Post Text' along with an *optional* 'Post Image'.
+* Each Wiki entry should support a required 'Post Title', 'Post Text', 'created date/time', 'last updated date/time', along with an *optional* 'Post Image'.
 
-* Each Wiki entry should also *optionally* support 0 to n line items each of which represent related information. Each post line item should also support a required 'Item Title' and 'Item Text' along with an *optional* 'Item Image'.
+* Each Wiki entry should also *optionally* support 0 to n line items each of which represent related information. Each post line item should also support a required 'Item Title', 'Item Text', 'created date/time', 'last updated date/time', along with an *optional* 'Item Image'.
 
 ##### Authors and all Wiki Entries and related items can be administered from your web app, this includes a signup page for new Authors (5pts)
 

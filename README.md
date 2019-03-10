@@ -3,7 +3,7 @@
 ## Requirements (Total of 20 points)
 
 ### Aesthetics (10 pts)
-Use HTML, CSS, templating, and any css resources neccessary to make your site aesthetically pleasing.
+Use HTML, CSS, templating, and any CSS resources neccessary to make your site aesthetically pleasing. NOTE: Primary layout should rely on CSS grid!
 
 #### Consistency (3 pts)
 - 3pts: Background, text format, and color usage are carefully chosen to produce a consistent screen layout for all your pages.

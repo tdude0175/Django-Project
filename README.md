@@ -35,16 +35,20 @@ Use HTML, CSS, templating, and any CSS resources neccessary to make your site ae
 
 * The project should use CSS Grid for the main layout. Other elments may be mixed in as you see fit. 
 
-* The main 'index' page should list all current Wiki entries from all Authors
+* The main 'index' page should list all current Wiki entries from all Authors along with their main image (if present)
+
+* The User should be able to do a keyword search that will return a list of Wiki entries where the entered keywords are found in the entry's title and/or text.
 
 * All pages should provide a Navagation Bar that allows a user to go 'Home', 'Add a New Entry', or 'Your Entries'. 'Add a new Entry' and list 'Your Entries' should only be available if the User is signed in.
 
-* All Users should be able to click the Title of an individual entry to see the full post. If a displayed entry is also owned by the current signed in User, you should offer them options to 'Edit and/or 'Delete' the entry.
+* All Users should be able to click the Title of an individual entry to see the full post. If the post has an image, it should display. Any 'Related Information' items for the post should be displayed in a sidebar at the right of the page. If a displayed entry is also owned by the current signed in User, you should offer them options to 'Edit and/or 'Delete' the entry.
+
+
 
 #### Model Details (5 pts):
 * Each Wiki entry should support a required 'Post Title', 'Post Text', 'created date/time', 'last updated date/time', along with an *optional* 'Post Image'. *NOTE:* The image should be stored in a model instance (i.e. no external URLs)
 
-* Each Wiki entry should also *optionally* support 0 to n line items each of which represent related information. Each post line item should also support a required 'Item Title', 'Item Text', 'created date/time', 'last updated date/time', along with an *optional* 'Item Image'. *NOTE:* The image should be stored in a model instance (i.e. no external URLs)
+* Each Wiki entry should also *optionally* support 0 to n 'Related Information' items each of which represent related information. Each post line item should also support a required 'Item Title', 'Item Text', 'created date/time', 'last updated date/time', along with an *optional* 'Item Image'. *NOTE:* The image should be stored in a model instance (i.e. no external URLs)
 
 ##### Authors and all Wiki Entries and related items can be administered from your web app, this includes a signup page for new Authors (5pts)
 
@@ -52,11 +56,11 @@ Use HTML, CSS, templating, and any CSS resources neccessary to make your site ae
 
 * You application depends on the built-in Django Admin for all  of your database maintenance (1 pts)
 
-### CHALLENGE:
-Add support for searching Wiki entries by keyword(s)
-
 ### RESOURCES:
 * This project will require the use of imagefields in your model. See the documentation on how to use them: https://docs.djangoproject.com/en/2.1/topics/files/
+
+* This project will require the use of the Django database search capabilities. See the documentation for more information: https://docs.djangoproject.com/en/2.1/topics/db/search/
+
 
 
 

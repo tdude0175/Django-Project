@@ -56,10 +56,13 @@ SUCCESSFUL CREATION OF REQUIRED MODELS AND ASSOCIATED KEYS MANDATORY FOR ANY POI
 ### RESOURCES:
 * This project will require the use of imagefields in your model. See the documentation on how to use them: https://docs.djangoproject.com/en/2.1/topics/files/
 
-* This project will require the use of the Django database search capabilities. See the documentation for more information: https://docs.djangoproject.com/en/2.1/topics/db/search/
+* This project will require the use of the Django database search capabilities. See the documentation for more information: https://docs.djangoproject.com/en/2.1/topics/db/queries/
 
 
+### CHALLENGES:
+* Implement pagination so that only a certain number of Wiki Posts are displayed on the main page/search results, and the user can 'page' through the entries. 
 
+* Add support for entering Wiki posts using the 'Markdown' syntax to support rich text formatting and other advanced formatting features.
 
 
 

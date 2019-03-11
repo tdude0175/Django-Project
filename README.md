@@ -42,11 +42,12 @@ Use HTML, CSS, templating, and any CSS resources neccessary to make your site ae
 * All Users should be able to click the Title of an individual entry to see the full post. If the post has an image, it should display. Any 'Related Information' items for the post should be displayed in a sidebar at the right of the page. If a displayed entry is also owned by the current signed in User, you should offer them options to 'Edit and/or 'Delete' the entry.
 
 #### Model Details (5 pts):
+SUCCESSFUL CREATION OF REQUIRED MODELS AND ASSOCIATED KEYS MANDATORY FOR ANY POINTS
 * Each Wiki entry should support a required 'Post Title', 'Post Text', 'created date/time', 'last updated date/time', along with an *optional* 'Post Image'. *NOTE:* The image should be stored in a model instance (i.e. no external URLs)
 
 * Each Wiki entry should also *optionally* support 0 to n 'Related Information' items each of which represent related information. Each post line item should also support a required 'Item Title', 'Item Text', 'created date/time', 'last updated date/time', along with an *optional* 'Item Image'. *NOTE:* The image should be stored in a model instance (i.e. no external URLs)
 
-#### Authors and all Wiki Entries and related items can be administered from your web app, this includes a signup page for new Authors (5pts):
+* Authors and all Wiki Entries and related items can be administered from your web app, this includes a signup page for new Authors (5 pts)
 
 * Your application depends on the built-in Django Admin for some portion of your database maintenance (3 pts)
 

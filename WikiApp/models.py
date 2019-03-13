@@ -23,7 +23,7 @@ class WikiArticleModel(models.Model):
     User = models.ForeignKey(WikiEditorModel, on_delete=models.PROTECT, null=True , blank=True)
 
     def __str__(self):
-        return self.Title + ' is article ' + str(self.User) + ' is User Who made it '
+        return self.Title + ' is article /' + str(self.User) + ' is User Who made it /'
 
 class ArticleSideContentModel(models.Model):
     SideTitle = models.CharField(max_length=200, null=True, blank=True)
@@ -32,4 +32,4 @@ class ArticleSideContentModel(models.Model):
     ArticleLink = models.ForeignKey(WikiArticleModel,on_delete=models.CASCADE, null=True , blank=True)
 
     def __str__(self):
-        return self.SideTitle + ' is side article' + self.ArticleLink + 'is the main article'
+        return self.SideTitle + ' is side article /' + str(self.ArticleLink)

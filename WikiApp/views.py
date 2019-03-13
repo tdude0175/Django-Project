@@ -61,12 +61,19 @@ def renderArticle(request, articleID):
             'article':ArticleToView
         }
     return render(request,'WikiApp/ReadArticle.html',context)
-@login_required
-def editArticle(request, articleID):
-    return render(request,'WikiApp/EditArticle.html',)
+
 @login_required
 def deleteArticle(request, articleID):
+    ArticleToDelete = get_object_or_404(WikiArticleModel, pk = articleID)
+    print(ArticleToDelete)
+    ArticleToDelete.delete()
     return render(request,'WikiApp/DeleteArticle.html',)
+
+@login_required
+def editArticle(request, articleID):
+    ArticleToDelete = get_object_or_404(WikiArticleModel, pk = articleID)
+    return render(request,'WikiApp/EditArticle.html',)
+
 @login_required
 def userArticleList(request):
     return render(request,'WikiApp/UserArticleList.html',)

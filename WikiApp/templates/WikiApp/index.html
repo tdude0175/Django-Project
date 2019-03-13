@@ -2,6 +2,7 @@
 {% block header %}
 Home Menu
 {% endblock header %}
+
 {% block content %}
 {% if ArticleList %}
 {% for EachArticle in ArticleList %}
@@ -9,10 +10,12 @@ Home Menu
     {% if user.is_authenticated %}
     <p>
         <a href="{% url 'ReadArticle' EachArticle.id %}">{{EachArticle.Title}}</a>
+        <a href="{% url 'DeleteArticle' EachArticle.id %}">Delete</a>
+        <a href="{% url 'EditArticle' EachArticle.id %}">Edit</a>
     </p>
     {% else %}
     <p>
-        {{EachArticle}}
+        <a href="{% url 'ReadArticle' EachArticle.id %}">{{EachArticle.Title}}</a>
     </p>
     {% endif %}
 

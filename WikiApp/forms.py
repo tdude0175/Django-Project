@@ -4,7 +4,7 @@ from .models import WikiArticleModel , WikiEditorModel , ArticleSideContentModel
 class EditorForm(forms.ModelForm):
     class Meta:
         model = WikiEditorModel
-        exclude = ['AccountLink']
+        exclude = ['Accountlink']
 
 
 class ArticleForm(forms.ModelForm):

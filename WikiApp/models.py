@@ -7,30 +7,29 @@ class WikiEditorModel(models.Model):
     Username = models.CharField(max_length=200)
     Password = models.CharField(max_length=300)
     Email = models.EmailField()
-    ProfilePicture = models.ImageField()
+    ProfilePicture = models.ImageField(upload_to='media', null=True,blank=True)
     Description = models.TextField(max_length=500)
-    Accountlink = models.ForeignKey(User, on_delete=models.CASCADE)
+    Accountlink = models.ForeignKey(User, on_delete=models.CASCADE , null=True , blank=True)
 
     def __str__(self):
         return self.Username
 
-
 class WikiArticleModel(models.Model):
     Title = models.CharField(max_length=200)
-    Body = models.TextField(max_length=1000)
-    Image = models.ImageField()
+    Body = models.TextField(max_length=5000)
+    Image = models.ImageField(upload_to='media' , null=True, blank=True)
     DateCreated = models.DateField(default=timezone.now)
     LastEditted = models.DateTimeField(default=timezone.now)
-    User = models.ForeignKey(WikiEditorModel, on_delete=models.PROTECT)
+    User = models.ForeignKey(WikiEditorModel, on_delete=models.PROTECT, null=True , blank=True)
 
     def __str__(self):
-        return self.Title
+        return self.Title + ' is article ' + str(self.User) + ' is User Who made it '
 
 class ArticleSideContentModel(models.Model):
-    SideTitle = models.CharField(max_length=200)
-    SideBody = models.TextField(max_length=200)
-    SidePicture = models.ImageField()
-    ArticleLink = models.ForeignKey(WikiArticleModel,on_delete=models.PROTECT)
+    SideTitle = models.CharField(max_length=200, null=True, blank=True)
+    SideBody = models.TextField(max_length=500,null=True,blank=True)
+    SidePicture = models.ImageField(upload_to='media',null=True,blank=True)
+    ArticleLink = models.ForeignKey(WikiArticleModel,on_delete=models.CASCADE, null=True , blank=True)
 
     def __str__(self):
-        return self.SideTitle
+        return self.SideTitle + ' is side article' + self.ArticleLink + 'is the main article'

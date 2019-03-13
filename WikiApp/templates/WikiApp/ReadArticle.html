@@ -1,6 +1,16 @@
 {% extends 'WikiApp/base.html' %}
+{% load static %}
+{% block header %}
+View {{article.Title}}
+{% endblock header %}
+
 
 {% block content %}
-<h1> Read Selected Article</h1>
-
+<p>{{article.Title}}</p>
+<p>{{article.Body}}</p>
+{% if article.Image %}
+<img src="{{ article.Image.url }}" alt="{{article.Image}}" width="20%" height="40%">
+{% else %}
+No image Found!
+{% endif %}
 {% endblock content %}

@@ -1,5 +1,9 @@
 {% extends 'WikiApp/base.html' %}
 
 {% block content %}
-New Article
+<form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{Articleform.as_p}}
+    <button>Submit</button>
+</form>
 {% endblock content %}

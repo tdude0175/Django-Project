@@ -1,0 +1,28 @@
+body
+{
+    display: grid;
+    grid-template-columns:repeat(20,1fr);
+    grid-template-rows:repeat(20,1fr);
+    grid-gap: 0.5em;
+}
+
+
+header
+{
+    background: lightsteelblue;
+    grid-column: 1/21;
+    grid-row: 1/4;
+}
+section
+{
+    background: aliceblue;
+    grid-column: 1/21;
+    grid-row: 4/17;
+}
+
+footer
+{
+    background: lightskyblue;
+    grid-column: 1/21;
+    grid-row: 17/21;
+}

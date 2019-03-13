@@ -1,5 +1,13 @@
 {% extends 'WikiApp/base.html' %}
 
 {% block content %}
-<h1>New User</h1>
+{% if UserForm.errors %}
+{{UserForm.errors}}
+{% endif %}
+
+<form action="{% url 'SaveNewUser' %}"method="post">
+    {% csrf_token %}
+    {{UserForm.as_p}}
+    <button>Submit</button>
+</form>
 {% endblock content %}

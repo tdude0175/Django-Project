@@ -1,5 +1,27 @@
 {% extends 'WikiApp/base.html' %}
-
+{% block header %}
+Home Menu
+{% endblock header %}
 {% block content %}
-<h1>index page</h1>
+{% if ArticleList %}
+{% for EachArticle in ArticleList %}
+<div>
+    {% if user.is_authenticated %}
+    <p>
+        <a href="{% url 'ReadArticle' EachArticle.id %}">{{EachArticle.Title}}</a>
+    </p>
+    {% else %}
+    <p>
+        {{EachArticle}}
+    </p>
+    {% endif %}
+
+    <p>
+        <small>{{EachArticle.Body|slice:':50'}} . . .</small>
+    </p>
+</div>
+{% endfor %}
+{% else %}
+No lists here
+{% endif %}
 {% endblock content %}

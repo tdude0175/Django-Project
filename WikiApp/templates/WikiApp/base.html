@@ -3,22 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <title>Home</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'WikiApp/css/base.css' %}">
 </head>
 <body>
 <header>
+    {% if user.is_authenticated %}
+    welcome {{user.username}}
+    <a href="{% url 'logout' %}"><button>LogOut Here</button></a>
+    {% else %}
+    Welcome Please Log In
+    <a href="{% url 'login' %}"><button>Log In Here</button></a>
+    <a href="{% url 'NewUser' %}"><button>New User?</button></a>
+
+    {% endif %}
+    <h1>
+        {% block header %}
+        Empty Header
+        {% endblock header %}
+    </h1>
     <a href="{% url 'index' %}">Home</a>
-    <a href="{% url 'DeleteArticle' 1 %}">Delete</a>
-    <a href="{% url 'EditArticle' 1 %}">Edit</a>
+    <a href="{% url 'DeleteArticle' 2 %}">Delete</a>
+    <a href="{% url 'EditArticle' 2 %}">Edit</a>
     <a href="{% url 'NewArticle' %}">New Article</a>
-    <a href="{% url 'NewUser' %}">New User</a>
-    <a href="{% url 'ReadArticle' 1 %}">Read Article</a>
+    <a href="{% url 'ReadArticle' 2 %}">Read Article</a>
     <a href="{% url 'ListUserArticles' %}">User Articles</a>
 </header>
-{% block content %}
-<h1>Beep boop beep</h1>
-{% endblock content %}
+<section>
+    {% block content %}
+    <h1>Beep boop beep</h1>
+    {% endblock content %}
+</section>
 <footer>
-
+Contant Us!
+    <span>Made By Thomas P Brown</span>
 </footer>
 </body>
 </html>

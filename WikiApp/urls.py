@@ -14,8 +14,11 @@ urlpatterns = \
         path('DeleteArticle/<int:articleID>/', views.deleteArticle, name='DeleteArticle'),
         path('ReadArticle/<int:articleID>', views.renderArticle, name='ReadArticle'),
         path('ListUserArticles/',views.userArticleList,name='ListUserArticles'),
-        path('SearchAtricles/<str:SearchItem>/', views.SearchWiki, name = 'Search_Items'),
+        path('SearchArticles/', views.SearchWiki, name = 'SearchArticles'),
         path('EditSideContent/<int:sideContentID>/', views.EditSideContent, name='EditSideContent'),
-        path('NewSideContent/', views.NewSideContent, name='NewSideContent'),
+        path('deleteSideContent/<int:sideContentID>/', views.deleteSideContent, name='deleteSideContent'),
+        path('NewSideContent/<int:articleID>/', views.NewSideContent, name='NewSideContent'),
         path('media/<path:path>/', serve, {'document_root': settings.MEDIA_ROOT, }),
     ]
+
+# <str:SearchItem>/

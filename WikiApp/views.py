@@ -3,8 +3,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .forms import ArticleSideContentModel, WikiEditorModel, \
     WikiArticleModel, ArticleForm, EditorForm, SideContentForm
 from django.contrib.auth.models import User
-from django.utils import timezone
-
+from django.db.models import Q
 
 # Create your views here.
 
@@ -95,13 +94,15 @@ def editArticle(request, articleID):
         context = \
             {
                 'articleForm': formToAllowArticleEditing,
-                'sideContentList': ListOfSideContent
+                'sideContentList': ListOfSideContent,
+                'article': ArticleToEdit
             }
         return render(request, 'WikiApp/EditArticle.html', context)
     context = \
         {
             'articleForm': formToAllowArticleEditing,
-            'sideContentList': ListOfSideContent
+            'sideContentList': ListOfSideContent,
+            'article': ArticleToEdit
         }
     return render(request, 'WikiApp/EditArticle.html', context)
 
@@ -117,6 +118,7 @@ def userArticleList(request):
     return render(request, 'WikiApp/UserArticleList.html', context)
 
 
+@login_required
 def EditSideContent(request, sideContentID):
     SideContentToEdit = get_object_or_404(ArticleSideContentModel, pk=sideContentID)
     ArticleToGet = WikiArticleModel.objects.get(articlesidecontentmodel=SideContentToEdit)
@@ -138,11 +140,14 @@ def EditSideContent(request, sideContentID):
     return render(request, 'WikiApp/EditSideContent.html', context)
 
 
-def NewSideContent(request):
+@login_required
+def NewSideContent(request, articleID):
     SideContent = SideContentForm(request.POST or None, request.FILES or None)
-    ArticleToLink = WikiArticleModel.objects.get()
+    ArticleToLink = get_object_or_404(WikiArticleModel, pk=articleID)
+    print(ArticleToLink)
     if request.method == 'POST' and SideContent.is_valid():
         SideContentToSave = SideContent.save(commit=None)
+        SideContentToSave.ArticleLink = ArticleToLink
         print(SideContentToSave)
         SideContentToSave.save()
         return redirect('index')
@@ -153,5 +158,22 @@ def NewSideContent(request):
     return render(request, 'WikiApp/NewSideContent.html', context)
 
 
+@login_required
+def deleteSideContent(request, sideContentID):
+    sideContentToDelete = get_object_or_404(ArticleSideContentModel, pk=sideContentID)
+    ArticleToLink = get_object_or_404(WikiArticleModel, articlesidecontentmodel=sideContentToDelete)
+    sideContentToDelete.delete()
+    return redirect('EditArticle', articleID=ArticleToLink.id)
+
+
 def SearchWiki(request):
-    return render(request, 'WikiApp/index.html')
+    contentToShow = WikiArticleModel.objects.filter(Q(Title__contains = request.POST['SearchText']) | Q(Body__contains = request.POST['SearchText']))
+    SideContentToShow = ArticleSideContentModel.objects.filter(Q(SideTitle__contains = request.POST['SearchText']) | Q(SideBody__contains = request.POST['SearchText']))
+    print(contentToShow)
+    print(SideContentToShow)
+    context = \
+        {
+            'articleContent':contentToShow,
+            'SideContent':SideContentToShow
+        }
+    return render(request, 'WikiApp/SearchWiki.html',context)

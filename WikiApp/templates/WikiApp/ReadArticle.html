@@ -18,7 +18,11 @@ No image Found!
 {% for allSideContent in sideContent %}
 <h4>{{allSideContent.SideTitle}}</h4>
 <p>{{allSideContent.SideBody}}</p>
+{% if allSideContent.SidePicture %}
 <img src="{{ allSideContent.SidePicture.url }}" alt="{{allSideContent.SidePicture}}" width="20%" height="40%">
+{% else %}
+No Image
+{% endif %}
 {% endfor %}
 {% else %}
 <p>No Side Content!</p>

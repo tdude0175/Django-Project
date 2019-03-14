@@ -1,0 +1,20 @@
+{% extends 'WikiApp/base.html' %}
+
+{% block header %}
+search for dem loops
+{% endblock header %}
+
+{% block content %}
+{% if articleContent or SideContent %}
+{% for Content in articleContent %}
+<p><a href="{% url 'ReadArticle' Content.id %}">{{Content.Title}}</a></p>
+{% endfor %}
+{% for sideContent in SideContent %}
+<h5>Side Contents </h5>
+{{sideContent.ArticleLink}}
+<p><a href="">{{sideContent.SideTitle}}</a></p>
+{% endfor %}
+{% else %}
+<p>No Related Content Found</p>
+{% endif %}
+{% endblock content %}

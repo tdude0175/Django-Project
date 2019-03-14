@@ -29,6 +29,11 @@
     {% else %}
     <a href="{% url 'index' %}">Home</a>
     {% endif %}
+    <form action="{% url 'SearchArticles' %}" method="post">
+        {% csrf_token %}
+        <input type="text"name="SearchText">
+        <button>Search</button>
+    </form>
 </header>
 <section>
     {% block content %}

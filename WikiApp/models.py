@@ -12,7 +12,7 @@ class WikiEditorModel(models.Model):
     Accountlink = models.ForeignKey(User, on_delete=models.CASCADE , null=True , blank=True)
 
     def __str__(self):
-        return self.Username + ' Is the Editor'
+        return self.Username + ' Is the Editor/ '
 
 class WikiArticleModel(models.Model):
     Title = models.CharField(max_length=200)

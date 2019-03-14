@@ -1,5 +1,17 @@
 {% extends 'WikiApp/base.html' %}
 
+{% block header %}
+Editor page
+
+{% endblock header %}
 {% block content %}
-Edit Article
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{articleForm.as_p}}
+    <button>Submit</button>
+</form>
+
+{% if request.method == 'POST' %}
+<h4>Item Edited Successfully</h4>
+{% endif %}
 {% endblock content %}

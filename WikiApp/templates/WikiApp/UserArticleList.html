@@ -2,4 +2,11 @@
 
 {% block content %}
 <h1>Users List Of articles</h1>
+{% for article in articleList %}
+<a href="{% url 'ReadArticle' article.id %}">{{article.Title}}</a>
+<a href="{% url 'DeleteArticle' article.id %}">Delete</a>
+<a href="{% url 'EditArticle' article.id %}">Edit</a>
+
+<p>{{article.Body|slice:':50'}} . . .</p>
+{% endfor %}
 {% endblock content %}

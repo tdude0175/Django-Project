@@ -5,20 +5,12 @@ Home Menu
 
 {% block content %}
 {% if ArticleList %}
-{% for EachArticle in ArticleList %}
-<div>
-    {% if user.is_authenticated %}
+{% for EachArticle in ArticleList|slice:':7' %}
+<div class="">
     <p>
         <a href="{% url 'ReadArticle' EachArticle.id %}">{{EachArticle.Title}}</a>
-        <a href="{% url 'DeleteArticle' EachArticle.id %}">Delete</a>
-        <a href="{% url 'EditArticle' EachArticle.id %}">Edit</a>
+        <small>Last Edited :{{EachArticle.LastEdited}}</small>
     </p>
-    {% else %}
-    <p>
-        <a href="{% url 'ReadArticle' EachArticle.id %}">{{EachArticle.Title}}</a>
-    </p>
-    {% endif %}
-
     <p>
         <small>{{EachArticle.Body|slice:':50'}} . . .</small>
     </p>

@@ -3,6 +3,7 @@ from django.shortcuts import render , redirect , get_object_or_404
 from .forms import ArticleSideContentModel , WikiEditorModel , \
     WikiArticleModel ,ArticleForm ,EditorForm , SideContentForm
 from django.contrib.auth.models import User
+from django.utils import timezone
 # Create your views here.
 
 def index(request):
@@ -45,7 +46,13 @@ def createNewArticle(request):
         ArticleCreator = WikiEditorModel.objects.get(Accountlink = request.user)
         CompleteArticle.User = ArticleCreator
         CompleteArticle.save()
-        return redirect('index')
+        if SideContent.is_valid() and request.POST['SideTitle'] != '':
+            contentToSave = SideContent.save(commit=None)
+            contentToSave.ArticleLink = CompleteArticle
+            contentToSave.save()
+            return redirect('index')
+        else:
+            return redirect('index')
     context =\
         {
             'Articleform':NewArticle,
@@ -55,28 +62,51 @@ def createNewArticle(request):
 
 def renderArticle(request, articleID):
     ArticleToView = get_object_or_404(WikiArticleModel, pk=articleID)
-    print(ArticleToView)
+    ArticleSideContent = ArticleSideContentModel.objects.filter(ArticleLink = ArticleToView)
+    print(ArticleSideContent)
     context = \
         {
-            'article':ArticleToView
+            'article':ArticleToView,
+            'sideContent':ArticleSideContent
         }
     return render(request,'WikiApp/ReadArticle.html',context)
 
 @login_required
 def deleteArticle(request, articleID):
     ArticleToDelete = get_object_or_404(WikiArticleModel, pk = articleID)
-    print(ArticleToDelete)
     ArticleToDelete.delete()
     return render(request,'WikiApp/DeleteArticle.html',)
 
 @login_required
 def editArticle(request, articleID):
-    ArticleToDelete = get_object_or_404(WikiArticleModel, pk = articleID)
-    return render(request,'WikiApp/EditArticle.html',)
+    ArticleToEdit = get_object_or_404(WikiArticleModel, pk = articleID)
+
+    formToAllowArticleEditing = ArticleForm(request.POST or None,request.FILES or None , instance=ArticleToEdit)
+    formToAllowSideContentEditing = SideContentForm(request.POST or None, request.FILES or None,)
+    if request.method == 'POST' and formToAllowArticleEditing.is_valid():
+        formToAllowArticleEditing.Image = request.FILES
+        formToAllowArticleEditing.save()
+        context = \
+            {
+                'articleForm':formToAllowArticleEditing
+            }
+        return render(request,'WikiApp/EditArticle.html',context)
+
+    context = \
+        {
+            'articleForm':formToAllowArticleEditing
+        }
+    return render(request,'WikiApp/EditArticle.html',context)
 
 @login_required
 def userArticleList(request):
-    return render(request,'WikiApp/UserArticleList.html',)
+    wikiEditor = WikiEditorModel.objects.get(Accountlink = request.user)
+    listofArticles = WikiArticleModel.objects.filter(User = wikiEditor)
+    context = \
+        {
+            'articleList': listofArticles
+        }
+    return render(request,'WikiApp/UserArticleList.html',context)
 
 def SearchWiki(request):
     return render(request,'WikiApp/index.html')

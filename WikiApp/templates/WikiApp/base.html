@@ -24,7 +24,6 @@
     </h1>
     {% if user.is_authenticated %}
     <a href="{% url 'index' %}">Home</a>
-    <a href="{% url 'EditArticle' 2 %}">Edit</a>
     <a href="{% url 'NewArticle' %}">New Article</a>
     <a href="{% url 'ListUserArticles' %}">User Articles</a>
     {% else %}

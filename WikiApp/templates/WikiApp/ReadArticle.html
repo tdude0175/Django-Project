@@ -6,11 +6,21 @@ View {{article.Title}}
 
 
 {% block content %}
-<p>{{article.Title}}</p>
+<h3>{{article.Title}}</h3>
 <p>{{article.Body}}</p>
 {% if article.Image %}
 <img src="{{ article.Image.url }}" alt="{{article.Image}}" width="20%" height="40%">
 {% else %}
 No image Found!
+{% endif %}
+
+{% if sideContent %}
+{% for allSideContent in sideContent %}
+<h4>{{allSideContent.SideTitle}}</h4>
+<p>{{allSideContent.SideBody}}</p>
+<img src="{{ allSideContent.SidePicture.url }}" alt="{{allSideContent.SidePicture}}" width="20%" height="40%">
+{% endfor %}
+{% else %}
+<p>No Side Content!</p>
 {% endif %}
 {% endblock content %}

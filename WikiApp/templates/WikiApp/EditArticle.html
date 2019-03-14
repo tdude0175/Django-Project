@@ -11,6 +11,28 @@ Editor page
     <button>Submit</button>
 </form>
 
+<div id="SideContentTable">
+    <table border="1">
+        <tr>
+            <th>SideContent</th>
+        </tr>
+        {% if sideContentList %}
+        {% for eachContent in sideContentList %}
+        <tr>
+            <td><a href="{% url 'EditSideContent' eachContent.id %}">{{eachContent.SideTitle}}</a></td>
+        </tr>
+        {% endfor %}
+        {% endif %}
+        <tr>
+            <td>
+                <a href="{% url 'NewSideContent' %}">
+                    Make New Side Content
+                </a>
+            </td>
+        </tr>
+
+    </table>
+</div>
 {% if request.method == 'POST' %}
 <h4>Item Edited Successfully</h4>
 {% endif %}

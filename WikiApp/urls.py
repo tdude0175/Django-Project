@@ -15,5 +15,7 @@ urlpatterns = \
         path('ReadArticle/<int:articleID>', views.renderArticle, name='ReadArticle'),
         path('ListUserArticles/',views.userArticleList,name='ListUserArticles'),
         path('SearchAtricles/<str:SearchItem>/', views.SearchWiki, name = 'Search_Items'),
-        path('media/<path:path>/', serve, {'document_root': settings.MEDIA_ROOT, })
+        path('EditSideContent/<int:sideContentID>/', views.EditSideContent, name='EditSideContent'),
+        path('NewSideContent/', views.NewSideContent, name='NewSideContent'),
+        path('media/<path:path>/', serve, {'document_root': settings.MEDIA_ROOT, }),
     ]

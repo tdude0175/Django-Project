@@ -1,0 +1,17 @@
+{% extends 'WikiApp/base.html' %}
+
+{% block header %}
+Edit Side Content
+{% endblock header %}
+
+{% block content %}
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ sideContentForm.as_p }}
+    <button>Submit</button>
+</form>
+{% if request.method == 'POST' %}
+<h1>Side Content Saved!</h1>
+{% endif %}
+<a href="{% url 'EditArticle' article.id %}">Return To Article Edit Page</a>
+{% endblock content %}

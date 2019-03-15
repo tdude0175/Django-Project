@@ -10,8 +10,8 @@ Edit Side Content
     {{ sideContentForm.as_p }}
     <button>Submit</button>
 </form>
-{% if request.method == 'POST' %}
+<a class="SideContent" href="{% url 'EditArticle' article.id %}">Return To Article Edit Page</a>
+{% if request.method == 'POST' and form.errors == Null %}
 <h1>Side Content Saved!</h1>
 {% endif %}
-<a class="SideContent" href="{% url 'EditArticle' article.id %}">Return To Article Edit Page</a>
 {% endblock content %}

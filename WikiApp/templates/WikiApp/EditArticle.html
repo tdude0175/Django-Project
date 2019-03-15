@@ -9,6 +9,7 @@ Editor page
     {% csrf_token %}
     {{articleForm.as_p}}
     <button>Submit</button>
+    <a href="{% url 'ReadArticle' article.id %}">View Article</a>
 </form>
 
 <div class="SideContent" id="SideContentTable">
@@ -36,10 +37,10 @@ Editor page
                 </a>
             </td>
         </tr>
-
     </table>
+
 </div>
-{% if request.method == 'POST' %}
+{% if request.method == 'POST' and form.errors == Null %}
 <h4>Item Edited Successfully</h4>
 {% endif %}
 {% endblock content %}

@@ -1,3 +1,5 @@
+/*I added a grid layout to Body for simple display of everything and it works well enough.
+I added a solid 20% to rows so header is more consistent in it's style*/
 body
 {
     margin: 2% 10%;
@@ -5,8 +7,8 @@ body
     grid-template-columns:repeat(20,1fr);
     grid-template-rows: 20% repeat(19,1fr);
 }
-
-
+/*Header covers the entire top half of the page and i put grid rows inside it so that it would display more appropriately
+It looks better with all the stuff there*/
 header
 {
     background: lightsteelblue;
@@ -15,22 +17,31 @@ header
     position: static;
     display: grid;
     grid-template-rows: repeat(5,1fr);
+    padding: 0.2%;
 }
-
+/*I added padding to account login bar that contains all information About login will be locked tothe top
+The padding is so it doesn't adhere so heavily to edges of the header*/
 .AccountLogin
 {
+    padding: 0.2%;
     grid-row: 1;
 }
+/*Header is the page Title I gave it padding for the same reason i gave padding to account login and tied it closest to
+the center*/
 .Header
 {
+    padding: 0.2%;
     grid-row: 2/4;
 }
 
+/*Nav bar adheres to the bottom of the header and has padding to separate it*/
 .NavBar
 {
+    padding: 0.2%;
     grid-row: 5;
 }
-
+/*section contains the content clock for information to display and for it to display in an orderly fashion it needed
+to use grid*/
 section
 {
     display: grid;
@@ -38,25 +49,46 @@ section
     grid-row: 6/19;
     grid-template-columns:repeat(20,1fr);
 }
-
+/*content is always the primary focus of the page and so it will always be on the big side that will be focused on first*/
 .Content
 {
     grid-column:1/16;
 }
-
+/*Side content has a background to differentiate from content as well to draw some attention since it has less area covered*/
 .SideContent
 {
     background:aliceblue ;
     grid-column: 16/21;
 }
 
+/*Footer simply covers The bottom part of the screen and doesn't contain any real information.*/
 footer
 {
-    background: lightskyblue;
+    background: lightsteelblue;
     grid-column: 1/21;
     grid-row: 19/21;
 }
+
+/*ArticleShort is used to help differentiate The articles and make them stand out more, it has grid mainly to show side content*/
 .ArticleShort
 {
     background: lightyellow;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+/*This helps seperate side content listings from the main article*/
+.ArticleShortSideContent
+{
+    grid-column: 2;
+}
+/*Search bar just uses padding to help it space from the clickable links*/
+#SearchBar
+{
+    padding: 0.5%;
+}
+/*Helps parse out links and make them more different */
+a
+{
+    padding: 0.5%;
+    font-weight: bold;
 }

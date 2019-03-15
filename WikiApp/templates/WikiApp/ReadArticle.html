@@ -6,14 +6,14 @@ View {{article.Title}}
 
 
 {% block content %}
-{% if request.user == article.User.Accountlink %}
-
-{% endif %}
 <div class="Content">
+
+    {% if request.user == article.User.Accountlink %}
     <p>
         <a href="{% url 'EditArticle' article.id %}">Edit</a>
         <a href="{% url 'DeleteArticle' article.id %}">Delete</a>
     </p>
+    {% endif %}
 <h3>{{article.Title}}</h3>
 <p>{{article.Body}}</p>
 {% if article.Image %}

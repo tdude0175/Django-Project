@@ -8,22 +8,32 @@ Home Menu
 {% if ArticleList %}
 <div class="Content">
 {% for EachArticle in ArticleList|slice:':7' %}
-<div class="ArticleShort">
-    <p>
-        <a href="{% url 'ReadArticle' EachArticle.id %}">{{EachArticle.Title}}</a>
-        <small>Last Edited :{{EachArticle.LastEdited}}</small>
-    </p>
-    <p>
-        <small>{{EachArticle.Body|slice:':50'}} . . .</small>
-    </p>
-    {% if request.user == EachArticle.User.Accountlink %}
-    <p>
-        <a href="{% url 'EditArticle' EachArticle.id %}">Edit</a>
-        <a href="{% url 'DeleteArticle' EachArticle.id %}">Delete</a>
-    </p>
-    {% endif %}
-</div>
+    <section class="ArticleShort">
+        <div>
+        <p>
+            <a href="{% url 'ReadArticle' EachArticle.id %}">{{EachArticle.Title}}</a>
+            <small>Last Edited :{{EachArticle.LastEdited}}</small>
+        </p>
+        <p>
+            <small>{{EachArticle.Body|slice:':50'}} . . .</small>
+        </p>
+        {% if request.user == EachArticle.User.Accountlink %}
+        <p>
+            <a href="{% url 'EditArticle' EachArticle.id %}">Edit</a>
+            <a href="{% url 'DeleteArticle' EachArticle.id %}">Delete</a>
+        </p>
+        {% endif %}
+        </div>
+        <span class="ArticleShortSideContent">
+            <h4>Side Content</h4>
+            {% for SideContent in SideContentList %}
+            {% if SideContent.ArticleLink.Title == EachArticle.Title %}
+            <p>{{SideContent.SideTitle}}</p>
+            {% endif %}
+            {% endfor %}
+        </span>
 
+    </section>
 {% endfor %}
 </div>
 {% else %}

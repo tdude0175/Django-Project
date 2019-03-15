@@ -153,7 +153,8 @@ def NewSideContent(request, articleID):
         return redirect('index')
     context = \
         {
-            'sideContentForm': SideContent
+            'sideContentForm': SideContent,
+            'article':ArticleToLink
         }
     return render(request, 'WikiApp/NewSideContent.html', context)
 

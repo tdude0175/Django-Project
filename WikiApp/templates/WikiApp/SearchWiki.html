@@ -5,16 +5,21 @@ search for dem loops
 {% endblock header %}
 
 {% block content %}
+<div class="Content">
 {% if articleContent or SideContent %}
 {% for Content in articleContent %}
 <p><a href="{% url 'ReadArticle' Content.id %}">{{Content.Title}}</a></p>
 {% endfor %}
+</div>
+<div class="SideContent">
 {% for sideContent in SideContent %}
 <h5>Side Contents </h5>
-{{sideContent.ArticleLink}}
-<p><a href="">{{sideContent.SideTitle}}</a></p>
+<p><a href="{% url 'ReadArticle' sideContent.ArticleLink.id %}">{{sideContent.SideTitle}}</a></p>
 {% endfor %}
+</div>
 {% else %}
-<p>No Related Content Found</p>
+<div class="Content">
+<h1>No Related Content Found</h1>
+</div>
 {% endif %}
 {% endblock content %}

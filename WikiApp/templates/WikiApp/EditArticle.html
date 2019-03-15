@@ -5,13 +5,13 @@ Editor page
 
 {% endblock header %}
 {% block content %}
-<form method="post" enctype="multipart/form-data">
+<form class="Content" method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{articleForm.as_p}}
     <button>Submit</button>
 </form>
 
-<div id="SideContentTable">
+<div class="SideContent" id="SideContentTable">
     <table border="1">
         <tr>
             <th>Side Content</th>

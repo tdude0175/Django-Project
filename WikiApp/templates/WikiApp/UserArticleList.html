@@ -1,6 +1,7 @@
 {% extends 'WikiApp/base.html' %}
 
 {% block content %}
+<div class="Content">
 <h1>Users List Of articles</h1>
 {% for article in articleList %}
 <a href="{% url 'ReadArticle' article.id %}">{{article.Title}}</a>
@@ -9,4 +10,5 @@
 
 <p>{{article.Body|slice:':50'}} . . .</p>
 {% endfor %}
+</div>
 {% endblock content %}

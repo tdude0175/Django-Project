@@ -5,7 +5,7 @@
 {{UserForm.errors}}
 {% endif %}
 
-<form action="{% url 'SaveNewUser' %}"method="post">
+<form class="Content" action="{% url 'SaveNewUser' %}"method="post">
     {% csrf_token %}
     {{UserForm.as_p}}
     <button>Submit</button>

@@ -16,7 +16,7 @@ class WikiEditorModel(models.Model):
 
 class WikiArticleModel(models.Model):
     Title = models.CharField(max_length=200)
-    Body = models.TextField(max_length=5000)
+    Body = models.TextField(max_length=1000)
     Image = models.ImageField(upload_to='media' , null=True, blank=True)
     DateCreated = models.DateField(auto_now_add=True)
     LastEdited = models.DateTimeField(auto_now=True)

@@ -6,20 +6,29 @@ View {{article.Title}}
 
 
 {% block content %}
+{% if request.user == article.User.Accountlink %}
+
+{% endif %}
+<div class="Content">
+    <p>
+        <a href="{% url 'EditArticle' article.id %}">Edit</a>
+        <a href="{% url 'DeleteArticle' article.id %}">Delete</a>
+    </p>
 <h3>{{article.Title}}</h3>
 <p>{{article.Body}}</p>
 {% if article.Image %}
-<img src="{{ article.Image.url }}" alt="{{article.Image}}" width="20%" height="40%">
+<img src="{{ article.Image.url }}" alt="{{article.Image}}" width="50%" height="=50%">
 {% else %}
 No image Found!
 {% endif %}
-
+</div>
+<div class="SideContent">
 {% if sideContent %}
 {% for allSideContent in sideContent %}
 <h4>{{allSideContent.SideTitle}}</h4>
 <p>{{allSideContent.SideBody}}</p>
 {% if allSideContent.SidePicture %}
-<img src="{{ allSideContent.SidePicture.url }}" alt="{{allSideContent.SidePicture}}" width="20%" height="40%">
+<img src="{{ allSideContent.SidePicture.url }}" alt="{{allSideContent.SidePicture}}" width="60%" height="20%">
 {% else %}
 No Image
 {% endif %}
@@ -27,4 +36,5 @@ No Image
 {% else %}
 <p>No Side Content!</p>
 {% endif %}
+</div>
 {% endblock content %}

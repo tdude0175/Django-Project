@@ -1,12 +1,14 @@
 {% extends 'WikiApp/base.html' %}
+{% load static %}
 {% block header %}
 Home Menu
 {% endblock header %}
 
 {% block content %}
 {% if ArticleList %}
+<div class="Content">
 {% for EachArticle in ArticleList|slice:':7' %}
-<div class="">
+<div class="ArticleShort">
     <p>
         <a href="{% url 'ReadArticle' EachArticle.id %}">{{EachArticle.Title}}</a>
         <small>Last Edited :{{EachArticle.LastEdited}}</small>
@@ -14,8 +16,16 @@ Home Menu
     <p>
         <small>{{EachArticle.Body|slice:':50'}} . . .</small>
     </p>
+    {% if request.user == EachArticle.User.Accountlink %}
+    <p>
+        <a href="{% url 'EditArticle' EachArticle.id %}">Edit</a>
+        <a href="{% url 'DeleteArticle' EachArticle.id %}">Delete</a>
+    </p>
+    {% endif %}
 </div>
+
 {% endfor %}
+</div>
 {% else %}
 No lists here
 {% endif %}

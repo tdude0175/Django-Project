@@ -1,11 +1,11 @@
 {% extends 'WikiApp/base.html' %}
 
 {% block header %}
-Add a new Article
+New Article
 {% endblock header %}
 
 {% block content %}
-<form method="post" enctype="multipart/form-data">
+<form class="Content" method="post" enctype="multipart/form-data">
     {% csrf_token %}
     <h3>Article Form</h3>
     {{Articleform.as_p}}
@@ -14,4 +14,7 @@ Add a new Article
     {{SideContentform.as_p}}
     <button>Submit</button>
 </form>
+<div class="SideContent">
+
+</div>
 {% endblock content %}

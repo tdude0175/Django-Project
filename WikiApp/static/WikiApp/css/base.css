@@ -1,9 +1,9 @@
 body
 {
+    margin: 2% 10%;
     display: grid;
     grid-template-columns:repeat(20,1fr);
-    grid-template-rows:repeat(20,1fr);
-    grid-gap: 0.5em;
+    grid-template-rows: 20% repeat(19,1fr);
 }
 
 
@@ -11,18 +11,52 @@ header
 {
     background: lightsteelblue;
     grid-column: 1/21;
-    grid-row: 1/4;
+    grid-row: 1/6;
+    position: static;
+    display: grid;
+    grid-template-rows: repeat(5,1fr);
 }
+
+.AccountLogin
+{
+    grid-row: 1;
+}
+.Header
+{
+    grid-row: 2/4;
+}
+
+.NavBar
+{
+    grid-row: 5;
+}
+
 section
 {
-    background: aliceblue;
+    display: grid;
     grid-column: 1/21;
-    grid-row: 4/17;
+    grid-row: 6/19;
+    grid-template-columns:repeat(20,1fr);
+}
+
+.Content
+{
+    grid-column:1/16;
+}
+
+.SideContent
+{
+    background:aliceblue ;
+    grid-column: 16/21;
 }
 
 footer
 {
     background: lightskyblue;
     grid-column: 1/21;
-    grid-row: 17/21;
+    grid-row: 19/21;
+}
+.ArticleShort
+{
+    background: lightyellow;
 }

@@ -5,6 +5,10 @@ class EditorForm(forms.ModelForm):
     class Meta:
         model = WikiEditorModel
         exclude = ['Accountlink']
+        widgets =\
+            {
+                'Password': forms.PasswordInput
+            }
 
 
 class ArticleForm(forms.ModelForm):

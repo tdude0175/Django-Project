@@ -1,5 +1,9 @@
 {% extends 'WikiApp/base.html' %}
 
+{% block header %}
+Make an account
+{% endblock header %}
+
 {% block content %}
 {% if UserForm.errors %}
 {{UserForm.errors}}
